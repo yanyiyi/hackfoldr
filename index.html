@@ -637,7 +637,7 @@ $("#topbar .form .submit.add.create").on("click tap", function(){
   var new_hackpad_title = $("#topbar .form .new.pad.title").val();
   //var new_hackpad_id = encodeURIComponent(new_hackpad_title.slice(0,8));
   var new_hackpad_id = Math.random().toString(36);
-  var new_hackpad_url = "https://rail.yannest.com/"+new_hackpad_id;
+  var new_hackpad_url = "https://railtp.hackpad.com"+new_hackpad_id;
   var new_menu_item = '<a href="'+new_hackpad_url+'" target="iframe" class="link item"><i class="icon text file outline"></i>'+new_hackpad_title+'</a>';
   // add new hackpad info to foldr
   if(new_hackpad_title.length > 0){
