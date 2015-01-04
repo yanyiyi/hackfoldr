@@ -76,7 +76,7 @@ var compile_json = function(rows){
     // reset all related variables and compile again
     csv_api_source = 'docs.google.com/feeds/download/spreadsheets/Export?key='+rows[0][0]+'&exportFormat=csv&gid=0';
     csv_api_source_type = "google";
-    csv_api_source_id = rows[0][0].trim();
+    // csv_api_source_id = rows[0][0].trim();
     // remember? we don't support submit forms with gsheet. so need to remove the + button as well as the form segment.
     $("#topbar .add.to.list, #topbar .submit.segment").remove();
     compile_ethercalc();
@@ -259,17 +259,7 @@ var compile_json = function(rows){
     }
 
     // set iframe src?
-    if(current_iframe_url == "edit"){
-      if(csv_api_source_type=="ethercalc"){
-        iframe_src = 'https://ethercalc.org/'+csv_api_source_id;
-      }else{
-        iframe_src = 'https://docs.google.com/spreadsheets/d/'+csv_api_source_id+'/edit';
-      };
-      $("title").text("編輯 | "+current_foldr_name+" | hackfoldr");
-      $("#topbar .edit.table").hide();
-      $("#topbar .refresh.table").show();
-      $("#topbar .add.to.list").show();
-    }else if((new RegExp(context.url+"/?")).test(current_iframe_url)){
+    if((new RegExp(context.url+"/?")).test(current_iframe_url)){
       iframe_src = current_iframe_url;
     }else if(/^https:\/\/.*.hackpad.com\//.test(context.url)){
       if( current_iframe_url === context.url.split(/\//).pop()){
