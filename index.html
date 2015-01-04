@@ -529,7 +529,7 @@ compile_ethercalc();
 $.each(foldr_histories, function(index, foldr_history){
   var item = JSON.parse(foldr_history);
   $("#sidebar .history .menu").append(
-    $('<a />', { href: '/'+item.foldr_id, 'class': 'foldr item' })
+    $('<a />', { href: '/', 'class': 'foldr item' })
       .text(item.foldr_name)
       .prepend($('<i class="icon exchange"></i>'))
   );
@@ -712,7 +712,6 @@ $("#sidebar").on("click tap", "a.link.item", function(event){
   if(iframe_path.match(/^https:\/\/.*.hackpad.com\//)){
     iframe_path = iframe_path.split(/\//).pop();
   }
-  // history.pushState(history_state,'', '/'+ethercalc_name+'/'+encodeURIComponent(encodeURIComponent(iframe_path))) ;
   history.pushState(history_state,'', '/'+encodeURIComponent(encodeURIComponent(iframe_path))) ;
   // when leaving ethercalc, show edit icon again
   if(event.target.target !== "_blank"){
@@ -752,34 +751,7 @@ $("#toc").on("click tap", ".header.item", function(){
   $(this).find('.icon.folder').toggle();
 });
 
-// when click on edit table button
-$("#topbar .edit.table").on("click tap", function(){
-  // show sheet
-  if(!hide_sheet){
-    if(csv_api_source_type=="ethercalc"){
-      $("#topbar .edit.table").attr("href",'https://ethercalc.org/'+csv_api_source_id);
-      // make foldr items sortable
-      if(sort_sheet){
-        $("#toc .sortable").sortable(sort_action);
-      }
-    }else if(csv_api_source_type=="google"){
-      $("#topbar .edit.table").attr("href",'https://docs.google.com/spreadsheets/d/'+csv_api_source_id+'/edit');
-    }
-    // change url
-    // history.pushState(history_state,'', '/'+ethercalc_name+'/edit');
-    // change page title
-    $("title").text("編輯 | "+current_foldr_name+" | hackfoldr");
-    // inactive #toc items
-    $("#toc a.link.item").removeClass("active");
-  }
-  // switch icon
-  $("#topbar .edit.table").hide();
-  $("#topbar .refresh.table").show();
-  $("#topbar .add.to.list").show();
-});
-
 // add href attr to foldr title
-// $("#topbar .foldr.title").attr("href",'/'+ethercalc_name);
 $("#topbar .foldr.title").attr("href",'/');
 
 // enable popup
