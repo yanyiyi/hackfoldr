@@ -712,8 +712,8 @@ $("#sidebar").on("click tap", "a.link.item", function(event){
   if(iframe_path.match(/^https:\/\/.*.hackpad.com\//)){
     iframe_path = iframe_path.split(/\//).pop();
   }
-  history.pushState(history_state,'', '/'+ethercalc_name+'/'+encodeURIComponent(encodeURIComponent(iframe_path))) ;
-
+  // history.pushState(history_state,'', '/'+ethercalc_name+'/'+encodeURIComponent(encodeURIComponent(iframe_path))) ;
+  history.pushState(history_state,'', '/'+encodeURIComponent(encodeURIComponent(iframe_path))) ;
   // when leaving ethercalc, show edit icon again
   if(event.target.target !== "_blank"){
     $("#topbar .edit.table").show();
@@ -766,7 +766,7 @@ $("#topbar .edit.table").on("click tap", function(){
       $("#topbar .edit.table").attr("href",'https://docs.google.com/spreadsheets/d/'+csv_api_source_id+'/edit');
     }
     // change url
-    history.pushState(history_state,'', '/'+ethercalc_name+'/edit');
+    // history.pushState(history_state,'', '/'+ethercalc_name+'/edit');
     // change page title
     $("title").text("編輯 | "+current_foldr_name+" | hackfoldr");
     // inactive #toc items
@@ -779,7 +779,8 @@ $("#topbar .edit.table").on("click tap", function(){
 });
 
 // add href attr to foldr title
-$("#topbar .foldr.title").attr("href",'/'+ethercalc_name);
+// $("#topbar .foldr.title").attr("href",'/'+ethercalc_name);
+$("#topbar .foldr.title").attr("href",'/');
 
 // enable popup
 $('i.icon').popup();</script></div></body></html>
